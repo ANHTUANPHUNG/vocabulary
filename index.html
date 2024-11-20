@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shuffled Vocabulary</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+      }
+      .group {
+        border: 1px solid #ddd;
+        padding: 10px;
+        background-color: #f9f9f9;
+      }
+      .group h2 {
+        font-size: 1.2em;
+        margin-top: 0;
+      }
+      .item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+      }
+      .item .vn,
+      .item .eng,
+      .item input[type="text"] {
+        flex: 1;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shuffled Vocabulary List</h1>
+
+    <div style="position: fixed; display: flex">
+      <button id="show-all">Show All</button>
+      <button id="show-vn">Show Vietnamese</button>
+      <button id="show-eng">Show English</button>
+      <button id="show-random-vn">Random vn</button>
+      <button id="show-random-eng">Random eng</button>
+    </div>
+    <div
+      id="vocabulary-container"
+      style="margin-top: 50px"
+      class="container"
+    ></div>
+    <!-- <script src="script2.js"></script> -->
+    <script src="scrip.js"></script>
+  </body>
+</html>
