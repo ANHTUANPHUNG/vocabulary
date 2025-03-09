@@ -205,6 +205,12 @@ var vocabulary2 = [
     eng: "break",
   },
   {
+    vn: "chia tay",
+    pronounce: "/breɪk/",
+    type: "v., n.",
+    eng: "break up",
+  },
+  {
     vn: "bữa sáng",
     pronounce: "/ˈbrɛkfəst/",
     type: "n.",
@@ -1697,7 +1703,7 @@ var vocabulary7 = [
     pronounce: "/pɑrk/",
   },
   { vn: "phần", eng: "part", type: "n.", pronounce: "/pɑrt/" },
-  { vn: "đối tác", eng: "partner", type: "n.", pronounce: "/ˈpɑrtnər/" },
+  { vn: "đối tác, cộng sự, bạn đời", eng: "partner", type: "n.", pronounce: "/ˈpɑrtnər/" },
   { vn: "bữa tiệc", eng: "party", type: "n.", pronounce: "/ˈpɑrti/" },
   {
     vn: "hộ chiếu",
@@ -2912,7 +2918,7 @@ const vocabulary11 = [
   { vn: "bóng chày", pronounce: "/ˈbeɪsbɔːl/", type: "n.", eng: "baseball" },
   { vn: "dựa vào", pronounce: "/beɪst/", type: "adj.", eng: "based" },
   { vn: "bóng rổ", pronounce: "/ˈbæskɪtbɔːl/", type: "n.", eng: "basketball" },
-  { vn: "đánh bại", pronounce: "/biːt/", type: "v.", eng: "beat" },
+  { vn: "tiết tấu", pronounce: "/biːt/", type: "v.", eng: "beat" },
   { vn: "thịt bò", pronounce: "/biːf/", type: "n.", eng: "beef" },
   { vn: "cư xử", pronounce: "/bɪˈheɪv/", type: "v.", eng: "behave" },
   { vn: "hành vi", pronounce: "/bɪˈheɪvjər/", type: "n.", eng: "behaviour" },
@@ -3042,40 +3048,57 @@ function renderVocabulary(vocabulary, hideVn , hideEng ) {
     container.appendChild(group);
   }
 }
+var lastClickedButton = null; // Lưu trữ nút vừa được bấm
+var isShowingVietnamese = true; // Trạng thái hiện tại: đang hiển thị Vietnamese
 
-// Initialize with unshuffled array
-renderVocabulary(currentVocabulary);
+// Lắng nghe sự kiện click trên tất cả các nút
+document.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", function () {
+    lastClickedButton = this; // Cập nhật nút vừa được click
+  });
+});
 
-// "Show All" button displays both Vietnamese and English without shuffling
+// Xử lý sự kiện nhấn Enter
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Ngăn Enter kích hoạt lại nút vừa bấm
+
+    // Xóa trạng thái nút vừa click để Enter không thực hiện hành động trước đó
+    lastClickedButton = null;
+
+    // Chuyển đổi giữa hiển thị Vietnamese và English
+    isShowingVietnamese = !isShowingVietnamese; // Đảo trạng thái
+    if (isShowingVietnamese) {
+      renderVocabulary(currentVocabulary, false, true); // Hiển thị chỉ Vietnamese
+    } else {
+      renderVocabulary(currentVocabulary, true, false); // Hiển thị chỉ English
+    }
+  }
+});
+
+// Các sự kiện click cho từng nút
 document.getElementById("show-all").addEventListener("click", function () {
   renderVocabulary(currentVocabulary, false, false);
 });
 
-// "Show Vietnamese" button hides English words, keeping the current order
 document.getElementById("show-vn").addEventListener("click", function () {
   renderVocabulary(currentVocabulary, false, true);
 });
 
-// "Show English" button hides Vietnamese words, keeping the current order
 document.getElementById("show-eng").addEventListener("click", function () {
   renderVocabulary(currentVocabulary, true, false);
 });
 
-// "Random vn" button shuffles and displays only Vietnamese words
-document
-  .getElementById("show-random-vn")
-  .addEventListener("click", function () {
-    currentVocabulary = shuffleArray([...originalVocabulary]);
-    renderVocabulary(currentVocabulary, false, true);
-  });
+document.getElementById("show-random-vn").addEventListener("click", function () {
+  currentVocabulary = shuffleArray([...originalVocabulary]);
+  renderVocabulary(currentVocabulary, false, true);
+});
 
-// "Random eng" button shuffles and displays only English words
-document
-  .getElementById("show-random-eng")
-  .addEventListener("click", function () {
-    currentVocabulary = shuffleArray([...originalVocabulary]);
-    renderVocabulary(currentVocabulary, true, false);
-  });
+document.getElementById("show-random-eng").addEventListener("click", function () {
+  currentVocabulary = shuffleArray([...originalVocabulary]);
+  renderVocabulary(currentVocabulary, true, false);
+});
+
 window.onload = function () {
   renderVocabulary(currentVocabulary);
 };
