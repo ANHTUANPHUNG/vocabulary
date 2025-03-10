@@ -1,5 +1,4 @@
-
-import { vocabulary } from './vocabulary.js'; // Import dữ liệu từ vựng
+import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -159,17 +158,18 @@ function filterVocabularyBySelectedLetters() {
   const selectedLetters = [];
 
   // Lấy tất cả các checkbox và kiểm tra xem nó có được chọn hay không
-  document.querySelectorAll("#character-container input[type='checkbox']").forEach(function (checkbox) {
-    if (checkbox.checked) {
-      selectedLetters.push(checkbox.id.replace("checkbox-", ""));  // Lấy chữ cái từ id của checkbox
-    }
-  });
-
+  document
+    .querySelectorAll("#character-container input[type='checkbox']")
+    .forEach(function (checkbox) {
+      if (checkbox.checked) {
+        selectedLetters.push(checkbox.id.replace("checkbox-", "")); // Lấy chữ cái từ id của checkbox
+      }
+    });
 
   if (selectedLetters.length === 0) {
     // Nếu không có checkbox nào được chọn, hiển thị tất cả từ vựng
-    const selectAllCheckbox = document.getElementById('character-all');
-    selectAllCheckbox.checked=false
+    const selectAllCheckbox = document.getElementById("character-all");
+    selectAllCheckbox.checked = false;
     currentVocabulary = [];
   } else {
     // Lọc từ vựng theo chữ cái đầu tiên
@@ -183,43 +183,60 @@ function filterVocabularyBySelectedLetters() {
 }
 
 function renderCharacters() {
-  const container = document.getElementById('character-container'); // Lấy thẻ div chứa
-  container.innerHTML = ''; // Làm sạch thẻ div trước khi thêm các phần tử mới
-  
+  const container = document.getElementById("character-container"); // Lấy thẻ div chứa
+  container.innerHTML = ""; // Làm sạch thẻ div trước khi thêm các phần tử mới
+  container.style.borderRadius = "5px";
+  container.style.position = "relative";
+  container.style.left = "0";
+  container.style.top = "5px";
+  container.style.height = "200px";
+  container.style.overflowY = "auto";
+  container.style.border = "1px solid grey";
+  container.style.backgroundColor = "white";
   // Duyệt qua mảng characters và tạo các thẻ div
-  characters.forEach(function(character) {
-    const charDiv = document.createElement('div'); // Tạo thẻ div mới cho từng chữ cái
-    charDiv.style.padding = '10px'; // Thêm khoảng cách bên trong thẻ div
-    charDiv.style.backgroundColor = '#f0f0f0'; // Màu nền cho mỗi chữ cái
-    charDiv.style.border = '1px solid #ccc'; // Viền cho mỗi chữ cái
-    charDiv.style.textAlign = 'center';
-    const checkbox = document.createElement('input');
-    checkbox.checked=true
-    checkbox.type = 'checkbox';
-    checkbox.id = `checkbox-${character}`;  // Thêm id cho checkbox
-    checkbox.style.marginRight = '10px'; // Khoảng cách giữa checkbox và chữ cái
+  characters.forEach(function (character) {
+    const charDiv = document.createElement("div"); // Tạo thẻ div mới cho từng chữ cái
+    charDiv.style.padding = "10px"; // Thêm khoảng cách bên trong thẻ div
+    charDiv.style.backgroundColor = "#f0f0f0"; // Màu nền cho mỗi chữ cái
+    charDiv.style.border = "1px solid #ccc"; // Viền cho mỗi chữ cái
+    charDiv.style.textAlign = "center";
+    const checkbox = document.createElement("input");
+    checkbox.checked = true;
+    checkbox.type = "checkbox";
+    checkbox.id = `checkbox-${character}`; // Thêm id cho checkbox
+    checkbox.style.marginRight = "10px"; // Khoảng cách giữa checkbox và chữ cái
 
     // Tạo chữ cái
-    const charText = document.createElement('span');
+    const charText = document.createElement("span");
     charText.textContent = character;
-    charDiv.addEventListener('click', function() {
-      checkbox.checked = !checkbox.checked;  
+    charDiv.addEventListener("click", function () {
+      checkbox.checked = !checkbox.checked;
       filterVocabularyBySelectedLetters(); // Khi checkbox thay đổi, lọc lại từ vựng
     });
-    checkbox.addEventListener('click', function() {
-      checkbox.checked = !checkbox.checked; 
+    checkbox.addEventListener("click", function () {
+      checkbox.checked = !checkbox.checked;
       filterVocabularyBySelectedLetters(); // Khi checkbox thay đổi, lọc lại từ vựng
     });
-    const selectAllCheckbox = document.getElementById('character-all');
-    selectAllCheckbox.addEventListener('click', function () {
+    const selectAllCheckbox = document.getElementById("character-all");
+    selectAllCheckbox.addEventListener("click", function () {
       // Lấy tất cả các checkbox con và thay đổi trạng thái của chúng
-      const checkboxes = document.querySelectorAll("#character-container input[type='checkbox']");
-      
-        checkboxes.forEach(function (checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;  // Đặt trạng thái của các checkbox con theo checkbox "Chọn tất cả"
+      if (container.style.display === 'none') {
+        // Nếu đang ẩn, mở lại container
+        container.style.display = 'block';  // Hoặc 'flex', tùy vào kiểu hiển thị ban đầu của container
+      } else {
+        // Nếu không, ẩn container đi
+        container.style.display = 'none';
+      }
+
+      const checkboxes = document.querySelectorAll(
+        "#character-container input[type='checkbox']"
+      );
+
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = selectAllCheckbox.checked; // Đặt trạng thái của các checkbox con theo checkbox "Chọn tất cả"
       });
-      
-      filterVocabularyBySelectedLetters();  // Lọc lại từ vựng sau khi thay đổi trạng thái checkbox
+
+      filterVocabularyBySelectedLetters(); // Lọc lại từ vựng sau khi thay đổi trạng thái checkbox
     });
     // Thêm checkbox và chữ cái vào div
     charDiv.appendChild(checkbox);
@@ -227,11 +244,9 @@ function renderCharacters() {
 
     // Thêm div vào container
     container.appendChild(charDiv);
-});
+  });
 }
 window.onload = function () {
-  renderCharacters()
+  renderCharacters();
   renderVocabulary(currentVocabulary);
 };
-
-
