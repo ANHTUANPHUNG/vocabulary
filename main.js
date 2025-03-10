@@ -1,4 +1,5 @@
-import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
+// import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
+import { vocabulary } from "./newVocabulary.js"; // Import dữ liệu từ vựng
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -217,16 +218,18 @@ function renderCharacters() {
       checkbox.checked = !checkbox.checked;
       filterVocabularyBySelectedLetters(); // Khi checkbox thay đổi, lọc lại từ vựng
     });
+
     const selectAllCheckbox = document.getElementById("character-all");
-    selectAllCheckbox.addEventListener("click", function () {
-      // Lấy tất cả các checkbox con và thay đổi trạng thái của chúng
+    const disabled = document.getElementById("disabled");
+    disabled.addEventListener("click", function () {
       if (container.style.display === 'none') {
-        // Nếu đang ẩn, mở lại container
-        container.style.display = 'block';  // Hoặc 'flex', tùy vào kiểu hiển thị ban đầu của container
+        container.style.display = 'block';  
       } else {
-        // Nếu không, ẩn container đi
         container.style.display = 'none';
       }
+    })
+    selectAllCheckbox.addEventListener("click", function () {
+     
 
       const checkboxes = document.querySelectorAll(
         "#character-container input[type='checkbox']"
