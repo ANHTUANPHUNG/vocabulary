@@ -1,5 +1,5 @@
-// import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
-import { vocabulary } from "./newVocabulary.js"; // Import dữ liệu từ vựng
+import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
+// import { vocabulary } from "./newVocabulary.js"; // Import dữ liệu từ vựng
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -194,6 +194,8 @@ function renderCharacters() {
   container.style.overflowY = "auto";
   container.style.border = "1px solid grey";
   container.style.backgroundColor = "white";
+  container.style.display = 'none';  
+
   // Duyệt qua mảng characters và tạo các thẻ div
   characters.forEach(function (character) {
     const charDiv = document.createElement("div"); // Tạo thẻ div mới cho từng chữ cái
