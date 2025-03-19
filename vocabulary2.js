@@ -3490,6 +3490,12 @@ export const vocabulary = [
     eng: "alternative",
   },
   {
+    vn: "cuộc tranh luận ",
+    pronounce: "/ˈɑːrɡjumənt/",
+    type: "n.",
+    eng: "argument",
+  },
+  {
     vn: "mặc dù",
     pronounce: "/ɔːlˈðoʊ/",
     type: "conj.",
@@ -3519,8 +3525,6 @@ export const vocabulary = [
     type: "n.",
     eng: "ankle",
   },
-  { vn: "tất cả", pronounce: "/ɔːl/", type: "adv.", eng: "all" },
-
   {
     vn: "không còn nữa",
     pronounce: "/ˈɛni mɔːr/",
@@ -3664,7 +3668,8 @@ export const vocabulary = [
   { vn: "bóng chày", pronounce: "/ˈbeɪsbɔːl/", type: "n.", eng: "baseball" },
   { vn: "dựa vào", pronounce: "/beɪst/", type: "adj.", eng: "based" },
   { vn: "bóng rổ", pronounce: "/ˈbæskɪtbɔːl/", type: "n.", eng: "basketball" },
-  { vn: "tiết tấu", pronounce: "/biːt/", type: "v.", eng: "beat" },
+  { vn: "tiết tấu,Đánh,đập, đánh bại", pronounce: "/biːt/", type: "v.", eng: "beat" },
+  { vn: " thuộc về", pronounce: "/biːt/", type: "v.", eng: "belong" },
   { vn: "thịt bò", pronounce: "/biːf/", type: "n.", eng: "beef" },
   { vn: "cư xử", pronounce: "/bɪˈheɪv/", type: "v.", eng: "behave" },
   { vn: "hành vi", pronounce: "/bɪˈheɪvjər/", type: "n.", eng: "behaviour" },
@@ -3796,7 +3801,7 @@ export const vocabulary = [
     eng: "certain",
   },
   {
-    vn: "chắc chắn",
+    vn: "1 cách chắc chắn",
     pronounce: "/ˈsɜːrtənli/",
     type: "adv.",
     eng: "certainly",
