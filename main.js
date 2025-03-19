@@ -1,4 +1,4 @@
-import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
+import { vocabulary } from "./vocabulary2.js"; // Import dữ liệu từ vựng
 // import { vocabulary } from "./newVocabulary.js"; // Import dữ liệu từ vựng
 
 function shuffleArray(array) {
@@ -204,7 +204,7 @@ function renderCharacters() {
     charDiv.style.border = "1px solid #ccc"; // Viền cho mỗi chữ cái
     charDiv.style.textAlign = "center";
     const checkbox = document.createElement("input");
-    checkbox.checked = true;
+    checkbox.checked = false;
     checkbox.type = "checkbox";
     checkbox.id = `checkbox-${character}`; // Thêm id cho checkbox
     checkbox.style.marginRight = "10px"; // Khoảng cách giữa checkbox và chữ cái
