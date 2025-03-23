@@ -1,4 +1,5 @@
-import { vocabulary } from "./vocabulary2.js"; // Import dữ liệu từ vựng
+// import { vocabulary } from "./vocabulary2.js"; // Import dữ liệu từ vựng
+import { vocabulary } from "./vocabulary.js"; // Import dữ liệu từ vựng
 // import { vocabulary } from "./newVocabulary.js"; // Import dữ liệu từ vựng
 
 function shuffleArray(array) {
@@ -74,6 +75,27 @@ function renderVocabulary(vocabulary, hideVn, hideEng) {
     container.appendChild(group);
   }
 }
+
+document.getElementById("check").addEventListener("click", function () {
+  // Select all input elements in the vocabulary container
+  const inputElements = document.querySelectorAll("#vocabulary-container .item input");
+
+  // Iterate over each input element
+  inputElements.forEach(function (inputElement, index) {
+    // Get the corresponding vocabulary item
+    const vocabularyItem = currentVocabulary[index];
+
+    // Check if the input value matches the corresponding English word
+    if (inputElement.value.trim().toLowerCase() === vocabularyItem.eng.toLowerCase()) {
+      // Highlight the correct answer
+      inputElement.style.border = "1px solid lightgreen";
+    } else {
+      // Highlight the wrong answer
+      inputElement.style.border = "1px solid lightcoral";
+    }
+  });
+});
+
 var lastClickedButton = null; // Lưu trữ nút vừa được bấm
 var isShowingVietnamese = true; // Trạng thái hiện tại: đang hiển thị Vietnamese
 
@@ -118,14 +140,21 @@ document.getElementById("show-eng").addEventListener("click", function () {
 document
   .getElementById("show-random-vn")
   .addEventListener("click", function () {
-    currentVocabulary = shuffleArray([...originalVocabulary]);
+    const filteredVocabulary = currentVocabulary.filter(function (item) {
+      return item.eng && item.eng.length > 0; // Đảm bảo từ có chữ cái đầu tiên
+    });
+    currentVocabulary = shuffleArray([...filteredVocabulary]);
     renderVocabulary(currentVocabulary, false, true);
   });
 
 document
   .getElementById("show-random-eng")
   .addEventListener("click", function () {
-    currentVocabulary = shuffleArray([...originalVocabulary]);
+    const filteredVocabulary = currentVocabulary.filter(function (item) {
+      return item.eng && item.eng.length > 0; // Đảm bảo từ có chữ cái đầu tiên
+    });
+    
+    currentVocabulary = shuffleArray([...filteredVocabulary]);
     renderVocabulary(currentVocabulary, true, false);
   });
 const characters = [
