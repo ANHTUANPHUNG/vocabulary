@@ -36,18 +36,6 @@ export const vocabulary = [
       "pronounce": "/baʊ/"
     },
     {
-      "vn": "cho phép",
-      "eng": "allow",
-      "type": "verb",
-      "pronounce": "/əˈlaʊ/"
-    },
-    {
-      "vn": "tránh",
-      "eng": "avoid",
-      "type": "verb",
-      "pronounce": "/əˈvɔɪd/"
-    },
-    {
       "vn": "rất tiếc phải thông báo làm gì đó",
       "eng": "regret + toV, Be sorry to V, Hate to V",
       "type": "verb phrases",
@@ -176,12 +164,6 @@ export const vocabulary = [
       pronounce: "/ˈtaɪdi/"
     },
     {
-      vn: "tai nạn",
-      eng: "accident",
-      type: "noun",
-      pronounce: "/ˈæksɪdənt/"
-    },
-    {
       vn: "mối lo ngại, sự quan tâm",
       eng: "the concern",
       type: "noun",
@@ -248,28 +230,10 @@ export const vocabulary = [
         pronounce: "/biː ˈlaɪkli tuː vɜːrb/"
       },
       {
-        vn: "rất lớn, khổng lồ, hoặc vô cùng to lớn.",
-        eng: "enormous",
-        type: "adjective",
-        pronounce: "/ɪˈnɔːməs/"
-      },
-      {
-        vn: "xem xét, cân nhắc",
-        eng: "consider",
-        type: "verb",
-        pronounce: "/kənˈsɪdə/"
-      },
-      {
         vn: "tách biệt, cô lập, hoặc xa cách",
         eng: "isolate",
         type: "verb",
         pronounce: "/ˈaɪsəleɪt/"
-      },
-      {
-        vn: "đồng nghiệp",
-        eng: "colleagues",
-        type: "noun",
-        pronounce: "/ˈkɒliːɡz/"
       },
       {
         vn: "lỗi thời",
@@ -282,12 +246,6 @@ export const vocabulary = [
         eng: "processor",
         type: "noun",
         pronounce: "/ˈprəʊsesər/"
-      },
-      {
-        vn: "khả năng",
-        eng: "ability",
-        type: "noun",
-        pronounce: "/əˈbɪləti/"
       },
       {
         vn: "sự trợ giúp",
@@ -475,11 +433,6 @@ export const vocabulary = [
           "type": "verb phrase",
           "pronounce": "/ɡɪv æn ɪmˈprɛʃən/"
         },
-      {  "vn": "sự chú ý",
-        "eng": " attention",
-        "type": "verb ",
-        "pronounce": "/əˈtɛnʃən/"
-      },
       {  "vn": "ấn tượng",
         "eng": " impression",
         "type": "verb ",

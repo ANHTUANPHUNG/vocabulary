@@ -610,7 +610,7 @@ const vocabulary3 = [
     eng: "connected",
   },
   {
-    vn: "xem xét",
+    vn: "xem xét,cân nhắc",
     pronounce: "/kənˈsɪdər/",
     type: "v.",
     eng: "consider",
@@ -1983,7 +1983,7 @@ var vocabulary4 = [
     eng: "engineer",
   },
   {
-    vn: "to lớn, khổng lồ",
+    vn: "rất lớn, khổng lồ, hoặc vô cùng to lớn",
     pronounce: "/ɪˈnɔːrməs/",
     type: "adj.",
     eng: "enormous",
